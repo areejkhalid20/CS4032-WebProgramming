@@ -4,9 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>sign-up</title>
+    <style>
+        .container
+        {
+            background-color:grey ;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
 
+        }
+        .submit:hover
+        {
+            background-color: #923030;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
         <form id="signup">
             <label for="name">Name: </label>
             <input type="text" id="username" placeholder="username*" required>
@@ -30,7 +44,9 @@
             <label for="number">Number: </label>
             <input type="number" id="number" placeholder="number*" required>
             <br>
-            <input type="submit">
+            <input type="submit" class="submit">
         </form> 
+    </div>
+       
 </body>
 </html>
