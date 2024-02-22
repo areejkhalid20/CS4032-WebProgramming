@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign-up</title>
+    <style>
+          body 
+          {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+        .container
+        {
+            background-color:grey ;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+        }
+        form
+        {
+            width: 300px;
+            margin: 0 auto;
+        }
+        label
+        {
+            display: block;
+            margin-bottom: 6px;
+        }
+        .submit:hover
+        {
+            background-color: #923030;
+        }
+        .submit
+        {
+            padding:10px 20px;
+            border: none;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form id="signup" onsubmit="return validateForm()">
+            <label for="name"><b>Name:</b></label>
+            <input type="text" id="username" placeholder="username*" required>
+            <div id="usernameError" class="error"></div>
+            <br>
+           
+            <label for="password"><b>Password:</b></label>
+            <input type="password" id="password" placeholder="password*" required>
+            <div id="passwordError" class="error"></div>
+            <br>
+
+            <label for="birthday"><b>Birthday: </b></label>
+            <input type="date" id="birthday" placeholder="birthday*" required>
+            <div id="birthdayError" class="error"></div>
+            <br>
+
+            <label for="email"><b>Email:</b></label>
+            <input type="email" id="email" placeholder="email*" required>
+            <div id="emailError" class="error"></div>
+            <br>
+            <b>Gender: </b><br>
+            <input type="radio" id="male" name="gender" value="Male" required>
+            <label for="male">Male</label>
+            <br>
+            <input type="radio" id="female" name="gender" value="Female" required>
+            <label for="female">Female</label>
+            <br>
+            <label for="number"><b>Number:</b></label>
+            <input type="number" id="number" placeholder="number*" required>
+            <div id="numberError" class="error"></div>
+            <br><br>
+            <input type="submit" class="submit">
+        </form> 
+    </div>
+
+    <script>
+      function validateForm() 
+      {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const birthdate = document.getElementById('birthday').value;
+            const email = document.getElementById('email').value;
+            const number = document.getElementById('number').value;
+
+            let isValid = true;
+
+            if (password.length < 8) 
+            {
+                showError("passwordError", "Password must be at least 8 characters long.");
+                isValid = false;
+            }
+
+            // Validate number
+            if (isNaN(number) || number.length !== 10) {
+                showError("numberError", "Please enter a valid 10-digit number.");
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function showError(id, message) {
+            const errorElement = document.getElementById(id);
+            errorElement.textContent = message;
+        }
+    </script>
+       
+</body>
+</html>
