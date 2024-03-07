@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculator</title>
+  <style>
+    #resultBox {
+      border: 1px solid black;
+      padding: 10px;
+      margin-top: 10px;
+      height: 10;
+    }
+    #buttonEdit{
+        background-color: rgb(185, 121, 141);
+    }
+   
+  </style>
+</head>
+<body>
+  <h2>Days Calculator</h2>
+  <form id="DayCalculatorForm">
+    <label for="input1">Enter the month:</label>
+    <input type="text" id="input1" name="input1"><br><br>
+    <button type="button" onclick="calculateNoDays()">calculate</button>
+  </form>
+
+  <div id="resultBox"></div>
+
+  <script>
+    function calculateNoDays() 
+    {
+      var input = document.getElementById("input1").value.toLowerCase();
+      var month;
+      switch(input)
+      {
+
+        case "jan":
+        case "mar":
+        case "may":    
+        case "jul":
+        case "aug":
+        case "oct":
+        case "dec":
+            days = 31;
+            break;
+            case "jan":
+        case "apr":
+        case "jun":    
+        case "sep":
+        case "nov":
+            days = 30;
+            break;
+        case "feb":
+            days = 28;
+            break;
+        default:
+            days = "Invalid Month";
+            break;
+      }
+        document.getElementById("resultBox").innerHTML ="Number of days: "+ days;
+    }
+    
+  </script>
+</body>
+</html>
