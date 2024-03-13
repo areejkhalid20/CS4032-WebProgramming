@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find Class and ID using jQuery</title>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".element").click(function(){
+            // Get class and id of the clicked element
+            var clicked_element = $(this);
+            var elementClass = clicked_element.attr("class");
+            var id = clicked_element.attr("id");
+            alert("Class: " + elementClass);
+            alert("ID: " + id);
+        });
+    });
+</script>
+</head>
+
+<body>
+<div class="element" id="element1">Element 1</div>
+<div class="element" id="element2">Element 2</div>
+<div class="element" id="element3">Element 3</div>
+</body>
+</html>

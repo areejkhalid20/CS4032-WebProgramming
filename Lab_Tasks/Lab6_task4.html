@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="jquery-3.7.1.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#remove").click(function(){
+                $("tr").remove();
+            });
+          });
+    </script>
+    
+    <style>
+        table 
+    {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    th, td 
+    {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+        </tr>
+        <tr>
+            <td>Areej</td>
+            <td>796</td>
+            <td><button id="remove">Remove</button></td>
+          </tr>
+    </table>
+</body>
+</html>
