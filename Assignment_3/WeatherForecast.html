@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body
+        {
+            font-family: Arial, sans-serif;
+        }
+
+        .container 
+        {
+            text-align: center;
+        }
+
+        .choices img 
+        {
+            margin: 0 20px;
+            width: 100px;
+            cursor: pointer;
+        }
+
+        .result 
+        {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .scoreboard 
+        {
+            margin-top: 20px;
+        }
+
+        .scoreboard p 
+        {
+            margin: 5px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Rock Paper Scissors</h1>
+        <div class="scoreboard">
+            <p>Player: <span id="player-score">0</span></p>
+            <p>Computer: <span id="computer-score">0</span></p>
+        </div>
+        <div class="choices">
+            <img src="./images/fist.png" alt="Rock" data-choice="rock">
+            <img src="./images/hand-paper.png" alt="Paper" data-choice="paper">
+            <img src="./images/scissors.png" alt="Scissors" data-choice="scissors">
+        </div>
+        <p class="result"></p>
+    </div>
+
+    <script>
+        $(document).ready(function() 
+        {
+            let playerScore = 0;
+            let computerScore = 0;
+
+            // Function to generate computer's choice
+            function computerPlay() 
+            {
+                const choices = ['rock', 'paper', 'scissors'];
+                return choices[Math.floor(Math.random() * 3)];
+            }
+
+            //to cjhek who wins, either computer or player
+            function playRound(playerSelection, computerSelection) 
+            {
+                if (playerSelection === computerSelection)
+                {
+                    return "It's a tie!";
+                } 
+                else if
+                 ((playerSelection === 'rock' && computerSelection === 'scissors') ||
+                           (playerSelection === 'paper' && computerSelection === 'rock') ||
+                           (playerSelection === 'scissors' && computerSelection === 'paper')) 
+                           {
+                    playerScore++;
+                    return "You win!";
+                } 
+                else 
+                {
+                    computerScore++;
+                    return "Computer wins!";
+                }
+            }
+
+            //to keep track of the score 
+            function updateScoreboard() 
+            {
+                $('#player-score').text(playerScore);
+                $('#computer-score').text(computerScore);
+            }
+
+            $('.choices img').on('click', function() 
+            {
+                const playerSelection = $(this).data('choice');
+                const computerSelection = computerPlay();
+                const result = playRound(playerSelection, computerSelection);
+                $('.result').text(result);
+                updateScoreboard();
+            });
+        });
+    </script>
+</body>
+</html>
