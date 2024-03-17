@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Clock</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body
+     {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f1f1f1;
+    }
+
+    .clock 
+    {
+      background-color: #ad6767;
+      color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .time 
+    {
+      font-size: 3rem;
+    }
+  </style>
+
+</head>
+<body>
+  <div class="clock">
+    <div class="time" id="time"></div>
+  </div>
+
+  <script>
+    $(document).ready(function() 
+    {
+      updateTime(); 
+      setInterval(updateTime, 1000); 
+
+      function updateTime() 
+      {
+        var now = new Date();
+        var hours = now.getHours().toString().padStart(2, '0');
+        var minutes = now.getMinutes().toString().padStart(2, '0');
+        var seconds = now.getSeconds().toString().padStart(2, '0');
+        var timeString = hours + ":" + minutes + ":" + seconds;
+        $('#time').text(timeString);
+      }
+    });
+  </script>
+</body>
+</html>
